@@ -1,9 +1,7 @@
 from typing import Literal
 
 
-type Speed = Literal[
-    "ultraBullet", "bullet", "blitz", "rapid", "classical", "correspondence"
-]
+type Speed = Literal["ultraBullet", "bullet", "blitz", "rapid", "classical", "correspondence"]
 
 """
 Speed

@@ -28,8 +28,7 @@ class UnlimitedTimeControl(BaseModel):
 
 
 type TimeControl = Annotated[
-    ClockTimeControl | CorrespondenceTimeControl | UnlimitedTimeControl,
-    Field(discriminator="type"),
+    ClockTimeControl | CorrespondenceTimeControl | UnlimitedTimeControl, Field(discriminator="type")
 ]
 
 """

@@ -9,7 +9,7 @@ from requests import Session
 
 
 from .formats import FormatHandler
-from . import utils
+from ..lib import utils
 
 
 logger = logging.getLogger("Lichess")

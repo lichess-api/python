@@ -3,11 +3,8 @@ def test_imports():
 
     assert lichess
 
-    # ---
-
-    from lichess import client, custom, LichessClient, schemas
+    from lichess import client, models, LichessClient
 
     assert client
-    assert custom
+    assert models
     assert LichessClient
-    assert schemas

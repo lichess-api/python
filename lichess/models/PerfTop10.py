@@ -2,16 +2,7 @@ from .TopUser import TopUser
 
 
 type PerfTop10 = tuple[
-    TopUser,
-    TopUser,
-    TopUser,
-    TopUser,
-    TopUser,
-    TopUser,
-    TopUser,
-    TopUser,
-    TopUser,
-    TopUser,
+    TopUser, TopUser, TopUser, TopUser, TopUser, TopUser, TopUser, TopUser, TopUser, TopUser
 ]
 
 """

@@ -2,11 +2,44 @@ import logging
 from typing import Literal
 from collections.abc import Iterable
 
-from .custom import ApiStream, ApiStreamEvent, BotGameStream, BotGameStreamEvent
+from pydantic import BaseModel
+
 
 from .session import TokenSession, Requestor
 
 from .formats import JSON
+
+from ..models import (
+    GameStartEvent,
+    GameFinishEvent,
+    ChallengeEvent,
+    ChallengeCanceledEvent,
+    ChallengeDeclinedEvent,
+    GameFullEvent,
+    GameStateEvent,
+    ChatLineEvent,
+    OpponentGoneEvent,
+)
+
+
+type ApiStreamEvent = (
+    GameStartEvent
+    | GameFinishEvent
+    | ChallengeEvent
+    | ChallengeCanceledEvent
+    | ChallengeDeclinedEvent
+)
+
+
+type BotGameStreamEvent = GameFullEvent | GameStateEvent | ChatLineEvent | OpponentGoneEvent
+
+
+class BotGameStream(BaseModel):
+    event: BotGameStreamEvent
+
+
+class ApiStream(BaseModel):
+    event: ApiStreamEvent
 
 
 # Base URL for the API

@@ -2,14 +2,7 @@ from typing import Literal
 
 
 type UciVariant = Literal[
-    "chess",
-    "crazyhouse",
-    "antichess",
-    "atomic",
-    "horde",
-    "kingofthehill",
-    "racingkings",
-    "3check",
+    "chess", "crazyhouse", "antichess", "atomic", "horde", "kingofthehill", "racingkings", "3check"
 ]
 
 """

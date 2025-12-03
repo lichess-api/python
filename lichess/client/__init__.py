@@ -34,14 +34,6 @@ type ApiStreamEvent = (
 type BotGameStreamEvent = GameFullEvent | GameStateEvent | ChatLineEvent | OpponentGoneEvent
 
 
-class BotGameStream(BaseModel):
-    event: BotGameStreamEvent
-
-
-class ApiStream(BaseModel):
-    event: ApiStreamEvent
-
-
 # Base URL for the API
 API_URL = "https://lichess.org"
 
@@ -62,6 +54,9 @@ class LichessClient:
         self.session: TokenSession = TokenSession(token)
         self._requestor = Requestor(self.session, base_url or API_URL, default_fmt=JSON)
 
+    class ApiStream(BaseModel):
+        event: ApiStreamEvent
+
     def stream_incoming_events(self) -> Iterable[ApiStreamEvent]:
         """
         Get your realtime stream of incoming events.
@@ -75,7 +70,10 @@ class LichessClient:
 
         for event in events:
             logger.debug(f"Raw incoming event: {event}")
-            yield ApiStream.model_validate({"event": event}).event
+            yield self.ApiStream.model_validate({"event": event}).event
+
+    class BotGameStream(BaseModel):
+        event: BotGameStreamEvent
 
     def stream_bot_game_state(self, game_id: str) -> Iterable[BotGameStreamEvent]:
         """
@@ -91,7 +89,7 @@ class LichessClient:
         events = self._requestor.get(path, stream=True)
 
         for event in events:
-            yield BotGameStream.model_validate({"event": event}).event
+            yield self.BotGameStream.model_validate({"event": event}).event
 
     def accept_challenge(self, challenge_id: str):
         """Accept an incoming challenge.

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, HttpUrl, Field
+from pydantic import BaseModel, HttpUrl
 
 
 class Twitch(BaseModel):
@@ -17,4 +17,4 @@ class UserStreamer(BaseModel):
     """
 
     twitch: Twitch
-    youtube: Youtube = Field(alias="youTube")
+    youtube: Youtube

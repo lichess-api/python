@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.urls]
-Source = "https://github.com/gameroman/lichess-api"
+Source = "https://github.com/lichess-api/python"
 
 [tool.ruff]
 line-length = 100
@@ -35,7 +35,8 @@ skip-magic-trailing-comma = true
 testpaths = ["tests"]
 
 [tool.taskipy.tasks]
-build = "python -c \"import shutil; shutil.rmtree('dist', ignore_errors=True)\" && uv build"
+clean = "python -c \"import shutil; shutil.rmtree('dist', ignore_errors=True)\""
+build = "task clean && uv build"
 publish = "uv publish"
 release = "uv build && uv publish"
 format = "uv run ruff format ."

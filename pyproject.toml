@@ -2,7 +2,7 @@
 name = "lichess-api"
 version = "0.5.0"
 description = "A simple Python wrapper for Lichess API"
-authors = [{ name = "GameRoMan", email = "dev@rman.dev" }]
+authors = [{ name = "gameroman", email = "dev@rman.dev" }]
 license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.12"
@@ -11,12 +11,10 @@ classifiers = [
 	"Programming Language :: Python :: 3",
 	"Programming Language :: Python :: 3.12",
 	"Programming Language :: Python :: 3.13",
+	"Programming Language :: Python :: 3.14",
 	"License :: OSI Approved :: MIT License",
 ]
-dependencies = [
-    "pydantic>=2.12.4",
-    "requests>=2.32.5",
-]
+dependencies = ["pydantic>=2.12.5", "requests>=2.33.0"]
 
 [project.urls]
 Source = "https://github.com/lichess-api/python"
@@ -43,4 +41,4 @@ format = "uv run ruff format ."
 test = "uv run pytest"
 
 [dependency-groups]
-dev = ["pytest>=9.0.1", "ruff>=0.14.7"]
+dev = ["pytest>=9.0.2", "ruff>=0.15.8"]
